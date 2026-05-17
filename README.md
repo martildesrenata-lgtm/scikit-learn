@@ -10,6 +10,6 @@ O modelo utiliza o algoritmo **Random Forest** para analisar variáveis como tem
 - Pandas (Manipulação de dados)
 - Scikit-Learn (Machine Learning)
 - ![Importância das Variáveis](importancia_fatores.png).
-- download.png
+[- download.png](https://github.com/martildesrenata-lgtm/scikit-learn/blob/aff94b20eafab8fd40c9252bb2d8e383b4f6254e/download.png)
   
 https://colab.research.google.com/drive/1m7YMggOWJpIFgIphXLhWR-gbvg8lgdeS#scrollTo=hOzVg-MigZFF&fullscreenOutput=true
