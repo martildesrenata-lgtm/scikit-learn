@@ -1,0 +1,37 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.ensemble import RandomForestClassifier
+
+# 1. Criando os dados simulados (Mesmo exemplo do Churn)
+data = {
+    'meses_contrato': [1, 12, 24, 2, 36, 4, 48, 5, 6, 24],
+    'valor_mensal': [100, 80, 70, 110, 60, 105, 55, 95, 100, 75],
+    'suporte_acionado': [10, 1, 0, 8, 0, 9, 1, 7, 8, 2],
+    'cancelou': [1, 0, 0, 1, 0, 1, 0, 1, 1, 0]
+}
+
+df = pd.DataFrame(data)
+X = df.drop('cancelou', axis=1)
+y = df['cancelou']
+
+# 2. Treinando o modelo
+modelo = RandomForestClassifier(random_state=42)
+modelo.fit(X, y)
+
+# 3. Criando o gráfico de importância
+importancias = pd.Series(modelo.feature_importances_, index=X.columns).sort_values(ascending=False)
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x=importancias.values, y=importancias.index, palette='viridis')
+
+plt.title('O que faz o cliente cancelar? (Importância das Variáveis)', fontsize=14)
+plt.xlabel('Nível de Importância para a IA', fontsize=12)
+plt.ylabel('Fatores Analisados', fontsize=12)
+
+# SALVANDO A IMAGEM PARA O GITHUB
+plt.savefig('importancia_fatores.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+print("Imagem 'importancia_fatores.png' salva com sucesso!")
+https://colab.research.google.com/drive/1pkyTEL4XE7GNBcqygBu6P0AbSfFQKx-H#scrollTo=hOzVg-MigZFF&fullscreenOutput=true
